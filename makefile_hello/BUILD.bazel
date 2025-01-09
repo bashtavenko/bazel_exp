@@ -1,0 +1,9 @@
+filegroup(
+    name = "srcs",
+    srcs = [
+        "Makefile",
+        "hello.cpp",
+        "hello.h",
+    ],
+    visibility = ["//:__subpackages__"],
+)
