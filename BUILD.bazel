@@ -1,0 +1,22 @@
+load("@buildifier_prebuilt//:rules.bzl", "buildifier")
+load("@rules_foreign_cc//foreign_cc:defs.bzl", "make")
+
+package(default_visibility = ["//visibility:public"])
+
+# bazel run //:buildifier
+# .. or warn
+buildifier(
+    name = "buildifier",
+    exclude_patterns = [
+        "./bazel-*/*",
+        "./.git/*",
+    ],
+    lint_mode = "fix",
+)
+
+make(
+    name = "makefile_hello_lib",
+    lib_source = "//makefile_hello:srcs",
+    out_static_libs = ["hello.a"],
+    targets = [""],
+)
